@@ -1,0 +1,23 @@
+.btn.delete{
+    font-weight: bold;
+    background-color: #a52834;
+    height: 35px;
+    width: 80px;
+    margin-right: 5px;
+}
+
+.btn.edit{
+    font-weight: bold;
+    background-color: #198754;
+    height: 35px;
+    width: 80px;
+}
+
+.td_edit{
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}

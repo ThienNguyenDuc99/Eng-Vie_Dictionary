@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <h1 class="h1">Admin</h1>
-    <form action="/admin" method="POST" class="main">
+    <form action="/" method="POST" class="main">
         <div class="form-group">
             <label for="en">English:</label>
             <input type="en" class="form-control en" placeholder="enter english word" name="en" id="en">
@@ -23,39 +23,40 @@
         </div>
         <input type="submit" class="btn btn-success">
     </form>
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>English</th>
-            <th>Vietnamese</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for x in mydoc %}
+    <div style="height: 500px !important; overflow: auto;">
+        <table class="table table-striped" >
+            <thead>
             <tr>
-                <td>{{ x.en }}</td>
-                <td>{{ x.vn }}</td>
-                <td class="td_edit">
-                    <button class="btn delete"><a href="/delete/{{ x._id }}">Delete</a></button>
-                    <button id = "{{ x._id }}" class="btn edit">Edit</button>
-                </td>
+                <th>English</th>
+                <th>Vietnamese</th>
+                <th>Action</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for x in mydoc %}
+                <tr>
+                    <td>{{ x.en }}</td>
+                    <td>{{ x.vn }}</td>
+                    <td class="td_edit">
+                        <button class="btn delete"><a href="/delete/{{ x._id }}">Delete</a></button>
+                        <button id="{{ x._id }}" class="btn edit">Edit</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="dialog" title="Chỉnh sửa từ" style="display:none">
-     <div class="form-group">
-            <label for="en">English:</label>
-            <input type="en" class="form-control en" placeholder="enter english word" name="en" id="en">
-        </div>
-        <div class="form-group">
-            <label for="vn">Vietnamese:</label>
-            <input type="vn" class="form-control vn" placeholder="enter translated word" name="vn" id="vn">
-        </div>
-        <input type="submit" class="btn btn-success">
+    <div class="form-group">
+        <label for="en">English:</label>
+        <input type="en" class="form-control en" placeholder="enter english word" name="en" id="en">
+    </div>
+    <div class="form-group">
+        <label for="vn">Vietnamese:</label>
+        <input type="vn" class="form-control vn" placeholder="enter translated word" name="vn" id="vn">
+    </div>
+    <input type="submit" class="btn btn-success">
 </div>
 <script src="../static/Lib/jquery-3.5.1.min.js"></script>
 <script src="../static/Lib/jquery-ui-1.12.1.custom/jquery-ui.js"></script>

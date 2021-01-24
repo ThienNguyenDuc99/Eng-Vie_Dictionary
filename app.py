@@ -17,7 +17,7 @@ db = mongo.db
 col = mongo.db["Dictionary_table"]
 
 
-@app.route('/')
+@app.route('/e-v')
 def home():
     if request.method == 'POST':
         en = request.form['en']
@@ -30,7 +30,8 @@ def home():
             return 'Success!!!'
 
     else:
-        return render_template("index.html")
+        mydoc = col.find({})
+        return render_template("e-v.html", mydoc=mydoc)
     # mydoc = col.find({"en": "probably"})
     # return render_template("index.html", mydoc=mydoc)
 
@@ -40,7 +41,7 @@ def login():
     return 'hi'
 
 
-@app.route("/admin", methods=['POST', 'GET'])
+@app.route("/", methods=['POST', 'GET'])
 def admin():
     if request.method == 'POST':
         en = request.form['en']
@@ -54,7 +55,7 @@ def admin():
                         "vn": vn
                     }
                 ])
-            return redirect('/admin')
+            return redirect('/')
         except:
             return 'Success!!!'
 
@@ -68,7 +69,7 @@ def admin():
 def delete(_id):
     try:
         col.delete_one({"_id": ObjectId(_id)})
-        return redirect('/admin')
+        return redirect('/')
     except:
         return 'There was a problem deleting that task'
 
@@ -86,7 +87,7 @@ def update(_id):
                     "vn": vn
                 },
             )
-            return redirect('/admin')
+            return redirect('/')
         except:
             return 'There was a problem updating that task'
 

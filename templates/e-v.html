@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="../static/Lib/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/eng-vie.css" rel="stylesheet">
+    <link href="../static/Lib/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css" rel="stylesheet">
+    <link href="../static/Lib/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet">
+    <title>Eng-Vie</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="h1">Eng-Vie</h1>
+    <div style="height: 50px; width: 100px" class="score">Score: </div>
+    <div style="height: 500px !important; overflow: auto;">
+        <table class="table table-striped" >
+            <thead>
+            <tr>
+                <th style="width: 400px; text-align: center">English</th>
+                <th style="width: 700px; text-align: center">Your Answer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in mydoc %}
+                <tr>
+                    <td style="width: 400px; text-align: center">{{ x.en }}</td>
+                    <td style="width: 700px; text-align: center"><input id="{{ x.vn }}" class="youranswer" type="text" style="width: 400px; outline: none"></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="../static/Lib/jquery-3.5.1.min.js"></script>
+<script src="../static/Lib/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="../static/javascript/eng-vie.js"></script>
+</body>
+</html>
